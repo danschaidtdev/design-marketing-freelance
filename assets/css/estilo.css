@@ -64,19 +64,19 @@ strong{
 
 /* Estilo do Banner */
 .banner {
-	background-image: url("../midia/tenha-mais-tempo-para-se-dedicar-ao-que-importa-pra-voce.jpg");
-	background-size: 100% auto;
+	background-image: url("../midia/coloque\ em\ dia\ a\ estratégia\ de\ divulgação\ do\ seu\ negócio-\ marketing\ e\ design\ digital.webp");
+	background-size: 100vw;
 	background-repeat: no-repeat;
 	background-position: top center;
 	width: 100vw;
+	
 	aspect-ratio: 16 / 6;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	text-align: center;
-	padding: 0 10px;
 	
-	box-shadow: inset 0 -30px 60px 0 color-mix(in srgb, var(--cor-escura) 100%, transparent);
+	
 
 	/* Transição suave para redimensionamento da tela */
 	transition: all 0.4s ease;
@@ -89,10 +89,11 @@ strong{
 	color: var(--cor-clara);
 	text-shadow: 2px 2px 5px var(--cor-escura);
 	background-color: color-mix(in srgb, var(--cor-clara) 40%, transparent);
-	padding: 10px 20px;
+	padding: 5px;
 	border-radius: 15px;
-	max-width: 100%;
+	width: 100vw;
 	overflow: visible;
+	margin: 5%;
 
 	/* Transição suave para ajuste de fontes e outros parâmetros */
 	transition: font-size 0.4s ease, padding 0.4s ease, transform 0.4s ease;
@@ -324,23 +325,26 @@ footer{
 }
 
 
-	.PlanoDeFundo{
-		
-		/*background-image: url("../midia/teste-fundo.png");*/
-		background: var(--cor-azul);
-		background-size: 100% auto; /* ajusta a largura e mantém proporção */
-		background-repeat: no-repeat;
-		background-position: top center;
-		width: 100%;
-		aspect-ratio: 16 / 6; /* mantém proporção da imagem */
-		display: flex;
-		box-sizing: border-box;
+/* nao esta com uso */
+.PlanoDeFundo{
+	
+	/*background-image: url("../midia/teste-fundo.jpg");*/
+	background: var(--cor-azul);
+	/*background-size: 100vw ; /* ajusta a largura e mantém proporção */
+	background-repeat: no-repeat;
+	background-position: top center;
+	width: 100vw;
+	height: 60;
+	
 
-		margin-bottom: 3%;
+	display: flex;
+	box-sizing: border-box;
+	
+	margin-bottom: 3%;
+
 
 	
-		
-		}
+	}
 	 
 
 
