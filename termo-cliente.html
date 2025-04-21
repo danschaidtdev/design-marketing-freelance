@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Termo de Prestação de Serviço</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: auto;
+      padding: 20px;
+    }
+    input, textarea {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 8px;
+    }
+    button {
+      padding: 10px 15px;
+      background-color: #363535;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #555;
+    }
+  </style>
+</head>
+<body>
+  <h1>Termo de Prestação de Serviço</h1>
+
+  <label>Nome do contratante:</label>
+  <input type="text" id="nome">
+
+  <label>CPF/CNPJ:</label>
+  <input type="text" id="cpf">
+
+  <label>Email:</label>
+  <input type="email" id="email">
+
+  <label>Telefone:</label>
+  <input type="text" id="telefone">
+
+  <label>Serviço contratado:</label>
+  <textarea id="servico"></textarea>
+
+  <label>Valor total:</label>
+  <input type="text" id="valor">
+
+  <label>Data de início:</label>
+  <input type="date" id="data_inicio">
+
+  <label>Data prevista de entrega:</label>
+  <input type="date" id="data_entrega">
+
+  <label>Forma de pagamento:</label>
+  <textarea id="pagamento"></textarea>
+
+  <button onclick="gerarPDF()">Gerar PDF</button>
+
+  <script>
+    async function gerarPDF() {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+
+      const marginLeft = 15;
+      const marginRight = 15;
+      const pageHeight = doc.internal.pageSize.height;
+      let y = 20;
+
+      const nome = document.getElementById("nome").value;
+      const cpf = document.getElementById("cpf").value;
+      const email = document.getElementById("email").value;
+      const telefone = document.getElementById("telefone").value;
+      const servico = document.getElementById("servico").value;
+      const valor = document.getElementById("valor").value;
+      const data_inicio = document.getElementById("data_inicio").value;
+      const data_entrega = document.getElementById("data_entrega").value;
+      const pagamento = document.getElementById("pagamento").value;
+
+      function addText(text, fontSize = 10, spacing = 6) {
+        const lines = doc.splitTextToSize(text, 180);
+        if (y + lines.length * spacing > pageHeight - 30) {
+          doc.addPage();
+          y = 20;
+        }
+        doc.setFontSize(fontSize);
+        doc.text(lines, marginLeft, y);
+        y += lines.length * spacing;
+      }
+
+      doc.setFontSize(14);
+      doc.text("Termo de Prestação de Serviço", marginLeft, y);
+      y += 10;
+
+      addText(`Nome do contratante: ${nome}`);
+      addText(`CPF/CNPJ: ${cpf}`);
+      addText(`Email: ${email}`);
+      addText(`Telefone: ${telefone}`);
+      addText(`Serviço contratado: ${servico}`);
+      addText(`Valor total: R$ ${valor}`);
+      addText(`Data de início: ${data_inicio}`);
+      addText(`Data prevista de entrega: ${data_entrega}`);
+      addText(`Forma de pagamento: ${pagamento}`);
+
+      addText("Cláusulas e Condições:", 11, 8);
+
+      const clausulas = [
+        "1. O serviço será iniciado após assinatura deste Termo e confirmação do pagamento inicial.",
+        "2. O projeto será dividido nas seguintes etapas com os respectivos pesos sobre o valor final:",
+        "   - Planejamento: 30%.",
+        "   - Execução: 40%.",
+        "   - Revisão e Ajustes Finais: 20%.",
+        "   - Entrega e Suporte: 10%.",
+
+        "3. Cancelamentos implicam retenções proporcionais ao estágio do serviço, sendo:",
+        "   - 30% durante o planejamento.",
+        "   - Até 70% durante a execução.",
+        "   - 90% durante a revisão.",
+        "   - 100% após entrega final.",
+        "- Valores excedentes aos retidos serão reembolsados somente à conta do contratante.",
+
+        "4. Caso o cliente não envie os dados necessários ou interrompa comunicações por mais de 10 dias úteis, o serviço poderá ser suspenso ou encerrado.",
+        "5. Caso o escopo do projeto seja alterado após início, será necessário novo orçamento e novo Termo de Serviço.",
+        "6. O contratante declara estar ciente da política de cancelamento e concorda com sua aplicação ao assinar este termo.",
+        "7. Ambas as partes devem atuar com boa-fé, transparência e respeito mútuo durante a execução.",
+        "8. Em caso de inadimplência, o prestador reserva-se o direito de reter a entrega dos materiais até regularização do pagamento.",
+        "9. Este termo é regido pelo Código Civil Brasileiro, com base nos artigos 599, 607, 389, 475, 523 e 422.",
+        "10. A presente assinatura deverá ser realizada por meio de certificação digital por intermédio da plataforma GOV.BR, sendo imprescindível que os dados fornecidos sejam compatíveis com os registros do contratante.",
+      ];
+
+      clausulas.forEach(cl => addText(cl));
+
+
+       // Força nova página para assinaturas
+       doc.addPage();
+        y = 20;
+
+      // Local, data e assinaturas
+      const dataAtual = new Date();
+      const local = "Porto Alegre, Rio Grande do Sul";
+      const dataFormatada = `${dataAtual.getDate().toString().padStart(2, '0')}/${(dataAtual.getMonth() + 1).toString().padStart(2, '0')}/${dataAtual.getFullYear()}`;
+      y += 5;
+      addText(`Local e data: ${local}, ${dataFormatada}`);y += 5;
+
+
+      // Espaço para assinatura lado a lado
+      if (y > pageHeight - 30) {
+        doc.addPage();
+        y = 20;
+      }
+
+      doc.setFontSize(11);
+      doc.text("Insira a sua assinatura logo abaixo do seu nome", 60, y);y += 5;
+  
+      y += 4;
+      doc.text(nome, marginLeft, y);
+      doc.text("Prestador de Serviços", 120, y);
+
+      doc.save(`Termo_${nome.replaceAll(" ", "_")}.pdf`);
+    }
+  </script>
+</body>
+</html>
