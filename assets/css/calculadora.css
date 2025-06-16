@@ -196,8 +196,8 @@
   #servicosScrollContainer {
     flex: 1;
     overflow-y: auto;
-    height: 350px; /* Ajuste conforme necessário */
-    margin: 15px 0;
+    max-height: 400px; /* Ajuste conforme necessário */
+    margin: 5px 0;
     border: 1px solid var(--cor-cinza);
     padding: 10px;
     border-radius: 8px;
