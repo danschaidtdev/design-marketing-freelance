@@ -1,15 +1,15 @@
 // Cálculo base atualizado
-const despesasFixasMensais = 3000;
+const despesasFixasMensais = 1800;
 const horasPorMes = 120;
-const lucroDesejado = 0.15;
+const lucroDesejado = 0.10;
 
 const custoHora = despesasFixasMensais / horasPorMes;
 const valorHoraComLucro = custoHora / (1 - lucroDesejado);
 const valorDia = valorHoraComLucro * 6;
 
 const multiplicadoresComplexidade = {
-  baixa: 1.0,
-  media: 1.3,
+  baixa: 0.5,
+  media: 1.0,
   alta: 1.5,
 };
 
