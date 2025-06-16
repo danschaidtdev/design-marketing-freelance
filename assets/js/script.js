@@ -67,3 +67,31 @@ setInterval(() => {
   termoSpan.textContent = termos[index];
   termoSpan.classList.add("slide-up");
 }, 1500);
+
+
+// GALERIA EM LOOP
+// Duplica o conteúdo da galeria para que o loop pareça contínuo
+const gallery = document.getElementById('gallery');
+gallery.innerHTML += gallery.innerHTML;
+
+//DELAY DA GALERIA
+//garanta que isso execute após o DOM carregar
+window.addEventListener('DOMContentLoaded', () => {
+  const target = document.getElementById('delayedDiv');
+
+  const observer = new IntersectionObserver(
+    (entries, observerInstance) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observerInstance.unobserve(entry.target); // Só ativa uma vez
+        }
+      });
+    },
+    {
+      threshold: 0.2, // Avisa quando 20% da div estiver visível
+    }
+  );
+
+  observer.observe(target);
+});

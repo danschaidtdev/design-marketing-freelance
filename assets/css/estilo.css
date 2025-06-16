@@ -482,6 +482,24 @@ footer{
 	opacity: 1;
 }
 
+
+/****************** LOOP DE IMG APARECE QUANDO ROLA *************/
+.delayed-div {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
+  text-align: center;
+  color: white;
+  font-size: 1.5rem;
+  margin-top: 2rem;
+}
+
+/* Classe para ativar a transição */
+.delayed-div.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
   
 /******************* CONTAINER FIXO DOS BOTÕES *****************/
 .containerFixos {
