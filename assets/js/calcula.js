@@ -194,7 +194,7 @@ function calcularOrcamento() {
     };
   
     try {
-      doc.addImage(logoBase64, 'JPEG', 10, y, 25, 25);
+      doc.addImage(logoBase64, 'JPEG', 10, y, 45, 25);
       y += 40;
     } catch (e) {
       console.error("Erro ao adicionar logo:", e);

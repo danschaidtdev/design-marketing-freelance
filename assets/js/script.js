@@ -95,3 +95,16 @@ window.addEventListener('DOMContentLoaded', () => {
 
   observer.observe(target);
 });
+
+
+
+//BARRA DE NAVEGAÇÃO
+const menuToggle = document.querySelector('.menu-toggle');
+  const menu = document.getElementById('menu');
+
+  menuToggle.addEventListener('click', () => {
+    const isOpen = menu.classList.toggle('open');
+    menuToggle.setAttribute('aria-expanded', isOpen);
+    menuToggle.innerHTML = isOpen ? '&times;' : '&#9776;'; // trocar ícone hamburger e x
+  });
+
