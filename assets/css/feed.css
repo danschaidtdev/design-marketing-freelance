@@ -368,34 +368,5 @@ nav {
 }
 /* MOBILE */
   @media (max-width: 768px) {
-    .menu-toggle {
-      display: block;
-    }
 
-    ul.menu {
-      flex-direction: column;
-      background-color: var(--cor-escura);
-      position: absolute;
-      top: 100%;
-      left: 0;
-      width: 100%;
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease;
-      border-bottom-left-radius: 10px;
-      border-bottom-right-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-    }
-
-    ul.menu.open {
-      max-height: 500px; /* o suficiente para mostrar os links */
-    }
-
-    ul.menu li {
-      border-top: 1px solid var(--cor-azul);
-    }
-
-    ul.menu li a {
-      padding: 12px 20px;
-    }
   }
