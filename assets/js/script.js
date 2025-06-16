@@ -89,7 +89,7 @@ window.addEventListener('DOMContentLoaded', () => {
       });
     },
     {
-      threshold: 0.2, // Avisa quando 20% da div estiver visível
+      threshold: 0.3, // Avisa quando 20% da div estiver visível
     }
   );
 

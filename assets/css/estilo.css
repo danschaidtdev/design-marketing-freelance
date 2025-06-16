@@ -484,12 +484,53 @@ footer{
 
 
 /****************** LOOP DE IMG APARECE QUANDO ROLA *************/
+
+.gallery-container {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.gallery {
+  display: flex;
+  width: max-content;
+  animation: scrollGallery 80s linear infinite;
+  gap: 10px;
+  align-items: center;
+  padding: 10px;
+}
+
+.gallery img {
+  max-width: 40vw;    /* Máximo 40% da largura da viewport */
+  max-height: 40vh;   /* Máximo 40% da altura da viewport */
+  height: auto;
+  width: auto;
+  object-fit: cover;
+  flex-shrink: 0;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+}
+
+@keyframes scrollGallery {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
 .delayed-div {
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 1s ease, transform 1s ease;
   text-align: center;
-  color: white;
+  color: var(--cor-clara);
   font-size: 1.5rem;
   margin-top: 2rem;
 }
