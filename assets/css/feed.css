@@ -284,6 +284,7 @@ nav {
 
 /* Área visível: container flexível sem altura fixa */
 .galeria-viewport {
+  
   width: 100%;
   overflow: hidden;
   display: flex;
@@ -295,7 +296,7 @@ nav {
 .galeria-imagens {
   display: flex;
   transition: transform 0.5s ease-in-out;
-  gap: 10px;
+  gap: 5px;
 }
 
 /* Cada imagem ocupa 100% da largura do container */
@@ -338,8 +339,17 @@ nav {
   right: 10px;
 }
 
+.chamadaText{
+  color: var(--cor-escura);
+}
 
-
+.destaqueText{
+  padding: 8px;
+  background-color: var(--cor-vermelho);
+  color: var(--cor-clara);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
 
 /* RODAPÉ */
 /* Adicione seu CSS de rodapé aqui */
